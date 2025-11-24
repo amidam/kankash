@@ -1,0 +1,56 @@
+version: "2"
+
+linters:
+  default: standard
+  enable:
+    # Core Go tools
+    - gofmt
+    - goimports
+
+    # Static analysis
+    - gosec
+    - gosimple
+    - typecheck
+
+    # Code quality
+    - gocritic
+    - gocyclo
+    - revive
+    - misspell
+    - unconvert
+    - unparam
+    - wastedassign
+
+    # Performance
+    - prealloc
+
+    # Style
+    - whitespace
+    - wsl
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+    - swaggo
+
+output:
+  formats:
+    text:
+      path: stdout
+      print-linter-name: true
+      print-issued-lines: false
+      colors: true
+  sort-order:
+    - linter
+    - severity
+    - file
+
+run:
+  timeout: 1m
+  relative-path-mode: gomod
+  allow-parallel-runners: true
+  go: "1.25"
